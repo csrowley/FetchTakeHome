@@ -10,6 +10,7 @@ import SwiftData
 
 @main
 struct FetchTakeHomeApp: App {
+    @StateObject var recipeViewModel: RecipeViewModel = RecipeViewModel()
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,
@@ -26,6 +27,7 @@ struct FetchTakeHomeApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(recipeViewModel)
         }
         .modelContainer(sharedModelContainer)
     }
